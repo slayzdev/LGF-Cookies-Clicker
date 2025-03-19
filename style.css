@@ -718,129 +718,102 @@ body {
     }
 }
 
-/* Styles mobiles */
+/* Version Mobile */
 @media screen and (max-width: 768px) {
-    body {
-        min-height: 100vh;
-        overflow-x: hidden;
-        overflow-y: auto;
+    .container {
+        padding: 5px;
     }
 
     .game-area {
-        display: flex;
-        flex-direction: column;
+        display: block !important;
         padding: 10px;
-        gap: 15px;
-        height: auto;
-        min-height: 100vh;
     }
 
     .game-title {
         padding: 10px;
-        margin: 0;
-    }
-
-    .game-title h1 {
-        font-size: 2.2em;
-    }
-
-    .main-content {
-        padding: 15px;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .cookie-container {
-        margin: 10px 0;
-    }
-
-    .cookie {
-        width: 150px;
-        height: 150px;
-    }
-
-    .stats-shop-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 15px;
-        width: 100%;
-    }
-
-    .stats {
-        margin: 0;
-        padding: 15px;
-        background: rgba(0, 0, 0, 0.6);
-        border-radius: 10px;
-        height: auto;
-    }
-
-    .stats h2 {
-        font-size: 1.5em;
         margin-bottom: 10px;
     }
 
+    .game-title h1 {
+        font-size: 24px;
+    }
+
+    .main-content {
+        padding: 10px;
+    }
+
+    .cookie-container {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .cookie {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    .stats {
+        width: 45% !important;
+        float: left;
+        margin: 0;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 10px;
+    }
+
+    .stats h2 {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
     .stats p {
-        font-size: 1.1em;
+        font-size: 14px;
         margin: 5px 0;
     }
 
     .shop {
+        width: 45% !important;
+        float: right;
         margin: 0;
-        padding: 15px;
+        padding: 10px;
+        position: static !important;
         background: rgba(0, 0, 0, 0.6);
         border-radius: 10px;
-        height: auto;
         max-height: 300px;
         overflow-y: auto;
-        position: relative;
-        top: 0;
     }
 
     .shop h2 {
-        font-size: 1.5em;
-        margin-bottom: 15px;
+        font-size: 18px;
+        margin-bottom: 10px;
     }
 
     .upgrades {
-        display: flex;
-        flex-direction: column;
         gap: 10px;
     }
 
     .upgrade {
-        padding: 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 8px;
+        padding: 8px;
+        margin-bottom: 8px;
     }
 
     .upgrade .icon {
-        width: 35px;
-        height: 35px;
-        font-size: 1.3em;
-        margin-bottom: 5px;
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
     }
 
     .upgrade h3 {
-        font-size: 1em;
-        margin: 0;
+        font-size: 14px;
     }
 
     .upgrade p {
-        font-size: 0.9em;
-        margin: 0;
+        font-size: 12px;
     }
 
     .upgrade-stats {
-        width: 100%;
-        padding: 8px;
-        font-size: 0.8em;
-        background: rgba(0, 0, 0, 0.3);
-        border-radius: 5px;
-        margin-top: 5px;
+        font-size: 12px;
+        padding: 5px;
     }
 
     .signature {
@@ -848,29 +821,18 @@ body {
         bottom: 0;
         left: 0;
         width: 100%;
-        padding: 10px;
+        padding: 8px;
+        font-size: 12px;
         background: rgba(0, 0, 0, 0.8);
-        font-size: 1em;
-        z-index: 100;
+        text-align: center;
     }
 }
 
+/* Suppression des autres media queries mobiles qui causent des conflits */
 @media screen and (max-width: 768px) and (orientation: landscape) {
-    .game-area {
-        padding: 5px;
-    }
-
     .cookie {
-        width: 100px;
-        height: 100px;
-    }
-
-    .stats-shop-container {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .shop {
-        max-height: 200px;
+        width: 100px !important;
+        height: 100px !important;
     }
 }
 
