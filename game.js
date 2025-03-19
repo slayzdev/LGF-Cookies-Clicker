@@ -1,5 +1,6 @@
 class CookieGame {
     constructor() {
+        this.isMobile = this.checkMobile();
         this.cookies = 0;
         this.cookiesPerSecond = 0;
         this.upgrades = {
@@ -60,6 +61,10 @@ class CookieGame {
         this.init();
     }
 
+    checkMobile() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+    }
+
     init() {
         // Gestion de l'écran de démarrage
         const splashScreen = document.querySelector('.splash-screen');
@@ -70,7 +75,6 @@ class CookieGame {
             }, 1000);
         }, 6000);
 
-        // Reste du code init
         this.initElements();
         this.initEventListeners();
         this.loadGame();
@@ -79,6 +83,28 @@ class CookieGame {
         this.startGoldenCookieSpawner();
         this.updateAchievements();
         this.updateUpgrades();
+
+        // Ajout de la gestion de l'orientation pour mobile
+        if (this.isMobile) {
+            window.addEventListener('orientationchange', () => {
+                setTimeout(() => this.handleOrientationChange(), 100);
+            });
+            this.handleOrientationChange();
+        }
+    }
+
+    handleOrientationChange() {
+        const isLandscape = window.innerWidth > window.innerHeight;
+        document.body.classList.toggle('landscape', isLandscape);
+        this.updateLayout();
+    }
+
+    updateLayout() {
+        if (this.isMobile) {
+            // Ajuster la taille des éléments en fonction de l'écran
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
     }
 
     initElements() {
@@ -90,13 +116,31 @@ class CookieGame {
     }
 
     initEventListeners() {
-        this.cookieElement.addEventListener('click', () => this.clickCookie());
-        this.upgradeElements.forEach(element => {
-            element.addEventListener('click', () => {
-                const upgradeId = element.dataset.id;
-                this.buyUpgrade(upgradeId);
+        if (this.isMobile) {
+            // Optimisation des événements tactiles pour mobile
+            this.cookieElement.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.clickCookie();
             });
+        } else {
+            this.cookieElement.addEventListener('click', () => this.clickCookie());
+        }
+
+        this.upgradeElements.forEach(element => {
+            if (this.isMobile) {
+                element.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    const upgradeId = element.dataset.id;
+                    this.buyUpgrade(upgradeId);
+                });
+            } else {
+                element.addEventListener('click', () => {
+                    const upgradeId = element.dataset.id;
+                    this.buyUpgrade(upgradeId);
+                });
+            }
         });
+
         setInterval(() => this.updateGame(), 1000);
     }
 
@@ -113,22 +157,41 @@ class CookieGame {
     spawnGoldenCookie() {
         const goldenCookie = document.createElement('div');
         goldenCookie.className = 'golden-cookie';
-        goldenCookie.style.left = Math.random() * (window.innerWidth - 60) + 'px';
-        goldenCookie.style.top = Math.random() * (window.innerHeight - 60) + 'px';
+
+        // Ajuster la position en fonction du type d'appareil
+        if (this.isMobile) {
+            // Éviter les bords de l'écran sur mobile
+            const margin = 80; // Taille du cookie doré sur mobile
+            goldenCookie.style.left = Math.random() * (window.innerWidth - margin) + 'px';
+            goldenCookie.style.top = Math.random() * (window.innerHeight - margin) + 'px';
+        } else {
+            goldenCookie.style.left = Math.random() * (window.innerWidth - 60) + 'px';
+            goldenCookie.style.top = Math.random() * (window.innerHeight - 60) + 'px';
+        }
         
-        goldenCookie.addEventListener('click', () => {
-            this.goldenClicks++;
-            this.applyGoldenCookieEffect();
-            document.body.removeChild(goldenCookie);
-            this.checkAchievements();
-        });
+        if (this.isMobile) {
+            goldenCookie.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.goldenClicks++;
+                this.applyGoldenCookieEffect();
+                document.body.removeChild(goldenCookie);
+                this.checkAchievements();
+            });
+        } else {
+            goldenCookie.addEventListener('click', () => {
+                this.goldenClicks++;
+                this.applyGoldenCookieEffect();
+                document.body.removeChild(goldenCookie);
+                this.checkAchievements();
+            });
+        }
 
         document.body.appendChild(goldenCookie);
         setTimeout(() => {
             if (document.body.contains(goldenCookie)) {
                 document.body.removeChild(goldenCookie);
             }
-        }, 15000);
+        }, this.isMobile ? 20000 : 15000); // Plus de temps pour attraper sur mobile
     }
 
     applyGoldenCookieEffect() {

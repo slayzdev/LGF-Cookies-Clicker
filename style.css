@@ -716,4 +716,100 @@ body {
         transform: scale(1.2);
         opacity: 0.8;
     }
+}
+
+/* Styles mobiles */
+@media (max-width: 768px) {
+    .game-area {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+    }
+
+    .game-title h1 {
+        font-size: 2.5em !important;
+    }
+
+    .cookie {
+        width: 200px !important;
+        height: 200px !important;
+    }
+
+    .stats h2 {
+        font-size: 2em !important;
+    }
+
+    .stats p {
+        font-size: 1.2em !important;
+    }
+
+    .shop {
+        position: relative !important;
+        top: 0 !important;
+        max-height: none !important;
+        margin-top: 20px !important;
+    }
+
+    .upgrade {
+        padding: 15px !important;
+    }
+
+    .upgrade .icon {
+        width: 50px !important;
+        height: 50px !important;
+        font-size: 2em !important;
+    }
+
+    .upgrade h3 {
+        font-size: 1.1em !important;
+    }
+
+    .upgrade p {
+        font-size: 0.9em !important;
+    }
+
+    .splash-screen .splash-content h1 {
+        font-size: 3em !important;
+    }
+
+    .splash-screen .splash-content p {
+        font-size: 1.5em !important;
+    }
+
+    .signature {
+        font-size: 1.1em !important;
+        padding: 10px !important;
+    }
+
+    #achievements-list {
+        grid-template-columns: 1fr !important;
+    }
+
+    .golden-cookie {
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    .notification {
+        width: 90% !important;
+        font-size: 0.9em !important;
+    }
+}
+
+/* Styles pour éviter le zoom sur mobile */
+@media (max-width: 768px) {
+    input, select, textarea {
+        font-size: 16px !important;
+    }
+}
+
+/* Styles pour la rotation de l'écran */
+@media (max-width: 768px) and (orientation: landscape) {
+    .cookie {
+        width: 150px !important;
+        height: 150px !important;
+    }
+
+    .game-area {
+        grid-template-columns: 1fr 300px !important;
+    }
 } 
