@@ -734,102 +734,112 @@ body {
         height: auto;
         min-height: 100vh;
         padding: 5px;
-        display: grid;
-        grid-template-columns: 1fr 140px;
+        display: flex;
+        flex-direction: column;
         gap: 10px;
     }
 
     .game-title {
         padding: 10px;
         margin-bottom: 10px;
-        grid-column: 1 / -1;
+        text-align: center;
     }
 
     .game-title h1 {
-        font-size: 1.8em;
+        font-size: 2em;
     }
 
     .main-content {
         padding: 10px;
-    }
-
-    .cookie {
-        width: 80px;
-        height: 80px;
-        margin: 5px auto;
-    }
-
-    .cookie-container {
-        margin: 10px 0;
-    }
-
-    .stats {
-        padding: 8px;
-        margin: 5px 0;
-    }
-
-    .stats h2 {
-        font-size: 1.2em;
-        margin-bottom: 5px;
-    }
-
-    .stats p {
-        font-size: 0.9em;
-    }
-
-    .shop {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        max-height: calc(100vh - 20px);
-        padding: 8px;
-        margin: 0;
-        overflow-y: auto;
-    }
-
-    .shop h2 {
-        font-size: 1.2em;
-        margin-bottom: 8px;
-    }
-
-    .upgrades {
-        gap: 8px;
-    }
-
-    .upgrade {
-        padding: 8px;
-        gap: 8px;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .upgrade .icon {
-        width: 30px;
-        height: 30px;
+    .cookie {
+        width: 120px;
+        height: 120px;
+        margin: 10px auto;
+    }
+
+    .cookie-container {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .stats {
+        padding: 15px;
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 10px;
+    }
+
+    .stats h2 {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+    }
+
+    .stats p {
         font-size: 1.2em;
     }
 
-    .upgrade h3 {
-        font-size: 0.9em;
+    .shop {
+        position: relative;
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 10px;
+    }
+
+    .shop h2 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
         text-align: center;
+    }
+
+    .upgrades {
+        gap: 15px;
+    }
+
+    .upgrade {
+        padding: 12px;
+        gap: 10px;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 8px;
+        transition: background 0.3s;
+    }
+
+    .upgrade:hover {
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    .upgrade .icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5em;
+    }
+
+    .upgrade h3 {
+        font-size: 1.2em;
     }
 
     .upgrade p {
-        font-size: 0.8em;
-        text-align: center;
+        font-size: 1em;
     }
 
     .upgrade-stats {
-        padding: 4px;
-        font-size: 0.7em;
-        text-align: center;
-        width: 100%;
+        padding: 8px;
+        font-size: 0.9em;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 5px;
     }
 
     .golden-cookie {
-        width: 30px;
-        height: 30px;
+        width: 50px;
+        height: 50px;
     }
 
     .splash-screen {
@@ -837,37 +847,26 @@ body {
     }
 
     .splash-content h1 {
-        font-size: 2em;
+        font-size: 2.5em;
     }
 
     .splash-content p {
-        font-size: 1em;
+        font-size: 1.3em;
     }
 
     .signature {
-        font-size: 0.9em;
-        padding: 8px;
-    }
-
-    #achievements h2 {
-        font-size: 1.5em;
-        margin: 10px 0;
-    }
-
-    #achievements-list {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-
-    .achievement {
+        font-size: 1.1em;
         padding: 10px;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.6);
+        border-radius: 8px;
+        margin: 10px 0;
     }
 }
 
 @media screen and (max-width: 768px) and (orientation: landscape) {
     .game-area {
-        grid-template-columns: 1fr 180px;
-        padding: 5px;
+        padding: 10px;
     }
 
     .cookie {
@@ -875,13 +874,12 @@ body {
         height: 100px;
     }
 
-    .shop {
-        max-height: calc(100vh - 20px);
+    .stats h2 {
+        font-size: 1.5em;
     }
 
-    .upgrade .icon {
-        width: 35px;
-        height: 35px;
+    .shop h2 {
+        font-size: 1.5em;
     }
 }
 
