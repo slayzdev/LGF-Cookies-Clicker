@@ -724,16 +724,11 @@ body {
         display: flex !important;
         flex-direction: column !important;
         padding: 10px !important;
-        gap: 10px !important;
+        gap: 20px !important;
     }
 
     .game-title h1 {
         font-size: 24px !important;
-    }
-
-    .cookie {
-        width: 120px !important;
-        height: 120px !important;
     }
 
     .main-content {
@@ -741,27 +736,109 @@ body {
         flex-direction: column !important;
         align-items: center !important;
         padding: 10px !important;
+        gap: 20px !important;
     }
 
     .cookie-container {
         text-align: center !important;
-        margin: 10px 0 !important;
+        margin: 20px 0 !important;
+    }
+
+    .cookie {
+        width: 120px !important;
+        height: 120px !important;
+    }
+
+    .stats-shop-container {
+        display: flex !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        gap: 15px !important;
+        margin-top: 20px !important;
     }
 
     .stats {
-        width: 48% !important;
-        float: left !important;
+        width: 45% !important;
         margin: 0 !important;
-        padding: 10px !important;
+        padding: 15px !important;
+        background: rgba(0, 0, 0, 0.6) !important;
+        border-radius: 10px !important;
+        height: auto !important;
+        float: none !important;
+    }
+
+    .stats h2 {
+        font-size: 18px !important;
+        margin-bottom: 10px !important;
+    }
+
+    .stats p {
+        font-size: 14px !important;
+        margin: 5px 0 !important;
     }
 
     .shop {
-        width: 48% !important;
-        float: right !important;
+        width: 45% !important;
         margin: 0 !important;
-        padding: 10px !important;
+        padding: 15px !important;
+        background: rgba(0, 0, 0, 0.6) !important;
+        border-radius: 10px !important;
+        height: auto !important;
+        max-height: 400px !important;
+        overflow-y: auto !important;
         position: static !important;
-        max-height: 300px !important;
+        float: none !important;
+    }
+
+    .shop h2 {
+        font-size: 18px !important;
+        margin-bottom: 10px !important;
+        text-align: center !important;
+    }
+
+    .upgrades {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+    .upgrade {
+        padding: 10px !important;
+        margin-bottom: 5px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        background: rgba(0, 0, 0, 0.4) !important;
+        border-radius: 8px !important;
+    }
+
+    .upgrade .icon {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 20px !important;
+        margin-bottom: 5px !important;
+    }
+
+    .upgrade h3 {
+        font-size: 14px !important;
+        margin: 5px 0 !important;
+        text-align: center !important;
+    }
+
+    .upgrade p {
+        font-size: 12px !important;
+        text-align: center !important;
+        margin: 5px 0 !important;
+    }
+
+    .upgrade-stats {
+        width: 100% !important;
+        padding: 8px !important;
+        font-size: 12px !important;
+        text-align: center !important;
+        background: rgba(0, 0, 0, 0.3) !important;
+        border-radius: 5px !important;
+        margin-top: 5px !important;
     }
 
     .signature {
@@ -769,18 +846,27 @@ body {
         bottom: 0 !important;
         left: 0 !important;
         width: 100% !important;
-        padding: 5px !important;
+        padding: 8px !important;
         font-size: 12px !important;
         text-align: center !important;
+        background: rgba(0, 0, 0, 0.8) !important;
         z-index: 1000 !important;
     }
 }
 
-/* Suppression de toutes les autres media queries */
+/* Suppression des autres media queries */
 @media screen and (max-width: 768px) and (orientation: landscape) {
     .cookie {
-        width: 100px !important;
-        height: 100px !important;
+        width: 80px !important;
+        height: 80px !important;
+    }
+
+    .stats-shop-container {
+        margin-top: 10px !important;
+    }
+
+    .shop {
+        max-height: 200px !important;
     }
 }
 
