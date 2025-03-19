@@ -722,84 +722,78 @@ body {
 @media screen and (max-width: 768px) {
     body {
         min-height: 100vh;
+        overflow-x: hidden;
         overflow-y: auto;
-        position: relative;
-    }
-
-    .container {
-        padding: 5px;
     }
 
     .game-area {
-        height: auto;
-        min-height: 100vh;
-        padding: 5px;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        padding: 10px;
+        gap: 15px;
+        height: auto;
+        min-height: 100vh;
     }
 
     .game-title {
         padding: 10px;
-        margin-bottom: 10px;
-        text-align: center;
+        margin: 0;
     }
 
     .game-title h1 {
-        font-size: 2em;
+        font-size: 2.2em;
     }
 
     .main-content {
-        padding: 10px;
+        padding: 15px;
         display: flex;
         flex-direction: column;
-        align-items: center;
-    }
-
-    .cookie {
-        width: 120px;
-        height: 120px;
-        margin: 10px auto;
+        gap: 15px;
+        background: var(--surface-color);
+        border-radius: 15px;
     }
 
     .cookie-container {
         margin: 10px 0;
-        text-align: center;
+    }
+
+    .cookie {
+        width: 150px;
+        height: 150px;
     }
 
     .stats-shop-container {
-        display: flex;
-        gap: 10px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
         width: 100%;
-        justify-content: space-between;
     }
 
     .stats {
-        padding: 15px;
         margin: 0;
-        flex: 1;
-        text-align: center;
+        padding: 15px;
         background: rgba(0, 0, 0, 0.6);
         border-radius: 10px;
-        min-width: 150px;
+        height: auto;
     }
 
     .stats h2 {
         font-size: 1.5em;
         margin-bottom: 10px;
+        color: var(--primary-color);
     }
 
     .stats p {
         font-size: 1.1em;
+        margin: 5px 0;
     }
 
     .shop {
-        position: relative;
-        flex: 1;
-        padding: 15px;
         margin: 0;
+        padding: 15px;
         background: rgba(0, 0, 0, 0.6);
         border-radius: 10px;
+        height: auto;
         max-height: 300px;
         overflow-y: auto;
     }
@@ -807,76 +801,83 @@ body {
     .shop h2 {
         font-size: 1.5em;
         margin-bottom: 15px;
-        text-align: center;
+        color: var(--primary-color);
     }
 
     .upgrades {
+        display: flex;
+        flex-direction: column;
         gap: 10px;
     }
 
     .upgrade {
-        padding: 12px;
-        gap: 10px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 8px;
         background: rgba(0, 0, 0, 0.4);
         border-radius: 8px;
-        transition: background 0.3s;
-    }
-
-    .upgrade:hover {
-        background: rgba(0, 0, 0, 0.6);
     }
 
     .upgrade .icon {
         width: 35px;
         height: 35px;
         font-size: 1.3em;
+        margin-bottom: 5px;
     }
 
     .upgrade h3 {
-        font-size: 1.1em;
+        font-size: 1em;
+        margin: 0;
     }
 
     .upgrade p {
         font-size: 0.9em;
+        margin: 0;
     }
 
     .upgrade-stats {
+        width: 100%;
         padding: 8px;
-        font-size: 0.9em;
+        font-size: 0.8em;
         background: rgba(0, 0, 0, 0.3);
         border-radius: 5px;
-    }
-
-    .golden-cookie {
-        width: 50px;
-        height: 50px;
-    }
-
-    .splash-screen {
-        height: 100vh;
-    }
-
-    .splash-content h1 {
-        font-size: 2.5em;
-    }
-
-    .splash-content p {
-        font-size: 1.3em;
+        margin-top: 5px;
     }
 
     .signature {
-        font-size: 1.1em;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
         padding: 10px;
-        text-align: center;
-        background: rgba(0, 0, 0, 0.6);
-        border-radius: 8px;
-        margin: 10px 0;
+        background: rgba(0, 0, 0, 0.8);
+        font-size: 1em;
+        z-index: 100;
+    }
+
+    .splash-screen {
+        padding: 20px;
+    }
+
+    .splash-content {
+        padding: 20px;
+    }
+
+    .splash-content h1 {
+        font-size: 2em;
+    }
+
+    .splash-content p {
+        font-size: 1.2em;
     }
 }
 
 @media screen and (max-width: 768px) and (orientation: landscape) {
     .game-area {
-        padding: 10px;
+        padding: 5px;
     }
 
     .cookie {
@@ -885,11 +886,11 @@ body {
     }
 
     .stats-shop-container {
-        flex-direction: row;
+        grid-template-columns: 1fr 1fr;
     }
 
     .shop {
-        max-height: 250px;
+        max-height: 200px;
     }
 }
 
