@@ -68,7 +68,7 @@ class CookieGame {
             setTimeout(() => {
                 splashScreen.remove();
             }, 1000);
-        }, 3000);
+        }, 6000);
 
         // Reste du code init
         this.initElements();
