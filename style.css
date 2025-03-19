@@ -719,79 +719,79 @@ body {
 }
 
 /* Styles mobiles */
-@media (max-width: 768px) {
-    .game-area {
-        grid-template-columns: 1fr !important;
-        gap: 15px !important;
+@media screen and (max-width: 768px) {
+    body {
+        min-height: 100vh;
+        overflow-y: auto;
+        position: relative;
     }
 
-    .game-title h1 {
-        font-size: 2.5em !important;
+    .game-area {
+        height: auto;
+        min-height: 100vh;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .game-title {
+        font-size: 24px;
+        margin: 5px 0;
     }
 
     .cookie {
-        width: 200px !important;
-        height: 200px !important;
+        width: 150px;
+        height: 150px;
+        margin: 10px auto;
     }
 
-    .stats h2 {
-        font-size: 2em !important;
-    }
-
-    .stats p {
-        font-size: 1.2em !important;
+    .stats {
+        position: relative;
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
     }
 
     .shop {
-        position: relative !important;
-        top: 0 !important;
-        max-height: none !important;
-        margin-top: 20px !important;
+        position: relative;
+        width: 100%;
+        height: auto;
+        max-height: none;
+        overflow-y: auto;
+        margin: 5px 0;
     }
 
     .upgrade {
-        padding: 15px !important;
-    }
-
-    .upgrade .icon {
-        width: 50px !important;
-        height: 50px !important;
-        font-size: 2em !important;
-    }
-
-    .upgrade h3 {
-        font-size: 1.1em !important;
-    }
-
-    .upgrade p {
-        font-size: 0.9em !important;
-    }
-
-    .splash-screen .splash-content h1 {
-        font-size: 3em !important;
-    }
-
-    .splash-screen .splash-content p {
-        font-size: 1.5em !important;
-    }
-
-    .signature {
-        font-size: 1.1em !important;
-        padding: 10px !important;
-    }
-
-    #achievements-list {
-        grid-template-columns: 1fr !important;
+        width: 100%;
+        margin: 5px 0;
     }
 
     .golden-cookie {
-        width: 80px !important;
-        height: 80px !important;
+        width: 40px;
+        height: 40px;
     }
 
-    .notification {
-        width: 90% !important;
-        font-size: 0.9em !important;
+    .splash-screen {
+        height: 100vh;
+        position: fixed;
+    }
+}
+
+@media screen and (max-width: 768px) and (orientation: landscape) {
+    .game-area {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .cookie {
+        width: 120px;
+        height: 120px;
+    }
+
+    .stats, .shop {
+        width: 45%;
     }
 }
 
