@@ -2,41 +2,152 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#1a1a1a">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LGF Cookie Clicker</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="splash-screen">
-        <div class="splash-content">
-            <h1>LGF Cookie Clicker</h1>
-            <p>Made By Youssef Bouden</p>
-        </div>
+    <div class="game-title">
+        <h1>LGF Cookie Clicker</h1>
     </div>
 
-    <div class="game-area">
-        <div class="game-title">
-            <h1>LGF Cookies Clicker</h1>
-        </div>
-        <div class="main-content">
-            <div class="cookie-container">
-                <img src="cookie.png" alt="Cookie" class="cookie" id="cookie">
-            </div>
-            <div class="stats-shop-container">
+    <div class="container">
+        <div class="game-area">
+            <div class="main-content">
                 <div class="stats">
-                    <h2>Stats</h2>
-                    <p>Cookies: <span id="cookie-count">0</span></p>
-                    <p>Production: <span id="production-rate">0</span>/s</p>
+                    <h2>🍪 <span id="cookie-count">0</span> cookies</h2>
+                    <p>Production : <span id="cps">0</span>/s</p>
                 </div>
-                <div class="shop">
-                    <h2>Boutique</h2>
-                    <div class="upgrades" id="upgrades">
-                        <!-- Les améliorations seront ajoutées ici dynamiquement -->
+
+                <div class="cookie-container">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTYgMjU2Ij48Y2lyY2xlIGN4PSIxMjgiIGN5PSIxMjgiIHI9IjEyMCIgZmlsbD0iI2Q2OWY0ZSIvPjxjaXJjbGUgY3g9IjgwIiBjeT0iOTAiIHI9IjIwIiBmaWxsPSIjODg1NjJhIi8+PGNpcmNsZSBjeD0iMTcwIiBjeT0iOTAiIHI9IjIwIiBmaWxsPSIjODg1NjJhIi8+PGNpcmNsZSBjeD0iMTMwIiBjeT0iMTUwIiByPSIyMCIgZmlsbD0iIzg4NTYyYSIvPjxjaXJjbGUgY3g9IjgwIiBjeT0iMTcwIiByPSIyMCIgZmlsbD0iIzg4NTYyYSIvPjxjaXJjbGUgY3g9IjE3MCIgY3k9IjE3MCIgcj0iMjAiIGZpbGw9IiM4ODU2MmEiLz48L3N2Zz4=" id="cookie" alt="Cookie" class="cookie" draggable="false">
+                </div>
+
+                <div id="achievements">
+                    <h2>🏆 Succès</h2>
+                    <div id="achievements-list"></div>
+                </div>
+            </div>
+
+            <div class="shop">
+                <h2>🛍️ Boutique</h2>
+                <div class="upgrades">
+                    <div class="upgrade" data-id="cursor">
+                        <div class="icon">👆</div>
+                        <div class="info">
+                            <h3>Curseur</h3>
+                            <p>Clique automatiquement toutes les 10 secondes</p>
+                            <div class="upgrade-stats">
+                                <p>Coût : <span class="cost">15</span> 🍪</p>
+                                <p>Production : <span class="production">0</span>/s</p>
+                                <p>Possédés : <span class="owned">0</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="upgrade" data-id="grandma">
+                        <div class="icon">👵</div>
+                        <div class="info">
+                            <h3>Grand-mère</h3>
+                            <p>Une grand-mère qui fait des cookies avec amour</p>
+                            <div class="upgrade-stats">
+                                <p>Coût : <span class="cost">100</span> 🍪</p>
+                                <p>Production : <span class="production">0</span>/s</p>
+                                <p>Possédés : <span class="owned">0</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="upgrade" data-id="farm">
+                        <div class="icon">🌾</div>
+                        <div class="info">
+                            <h3>Ferme</h3>
+                            <p>Cultive des cookies naturels</p>
+                            <div class="upgrade-stats">
+                                <p>Coût : <span class="cost">1100</span> 🍪</p>
+                                <p>Production : <span class="production">0</span>/s</p>
+                                <p>Possédés : <span class="owned">0</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="upgrade" data-id="mine">
+                        <div class="icon">⛏️</div>
+                        <div class="info">
+                            <h3>Mine</h3>
+                            <p>Extrait des pépites de chocolat</p>
+                            <div class="upgrade-stats">
+                                <p>Coût : <span class="cost">12000</span> 🍪</p>
+                                <p>Production : <span class="production">0</span>/s</p>
+                                <p>Possédés : <span class="owned">0</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="upgrade" data-id="factory">
+                        <div class="icon">🏭</div>
+                        <div class="info">
+                            <h3>Usine</h3>
+                            <p>Production industrielle de cookies</p>
+                            <div class="upgrade-stats">
+                                <p>Coût : <span class="cost">130000</span> 🍪</p>
+                                <p>Production : <span class="production">0</span>/s</p>
+                                <p>Possédés : <span class="owned">0</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="upgrade" data-id="bank">
+                        <div class="icon">🏦</div>
+                        <div class="info">
+                            <h3>Banque</h3>
+                            <p>Génère des intérêts en cookies</p>
+                            <div class="upgrade-stats">
+                                <p>Coût : <span class="cost">1400000</span> 🍪</p>
+                                <p>Production : <span class="production">0</span>/s</p>
+                                <p>Possédés : <span class="owned">0</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="upgrade" data-id="temple">
+                        <div class="icon">⛪</div>
+                        <div class="info">
+                            <h3>Temple</h3>
+                            <p>Prières aux dieux des cookies</p>
+                            <div class="upgrade-stats">
+                                <p>Coût : <span class="cost">20000000</span> 🍪</p>
+                                <p>Production : <span class="production">0</span>/s</p>
+                                <p>Possédés : <span class="owned">0</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="upgrade" data-id="wizard">
+                        <div class="icon">🧙‍♂️</div>
+                        <div class="info">
+                            <h3>Tour de Magie</h3>
+                            <p>Invoque des cookies par magie</p>
+                            <div class="upgrade-stats">
+                                <p>Coût : <span class="cost">330000000</span> 🍪</p>
+                                <p>Production : <span class="production">0</span>/s</p>
+                                <p>Possédés : <span class="owned">0</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="upgrade" data-id="shipment">
+                        <div class="icon">🚀</div>
+                        <div class="info">
+                            <h3>Vaisseau</h3>
+                            <p>Importe des cookies de la planète Cookie</p>
+                            <div class="upgrade-stats">
+                                <p>Coût : <span class="cost">5100000000</span> 🍪</p>
+                                <p>Production : <span class="production">0</span>/s</p>
+                                <p>Possédés : <span class="owned">0</span></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

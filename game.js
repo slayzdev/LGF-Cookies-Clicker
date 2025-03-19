@@ -1,6 +1,5 @@
 class CookieGame {
     constructor() {
-        this.isMobile = this.checkMobile();
         this.cookies = 0;
         this.cookiesPerSecond = 0;
         this.upgrades = {
@@ -61,50 +60,37 @@ class CookieGame {
         this.init();
     }
 
-    checkMobile() {
-        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+    init() {
+        // Créer et afficher l'animation d'introduction
+        const introAnimation = document.createElement('div');
+        introAnimation.className = 'intro-animation';
+        
+        const introText = document.createElement('div');
+        introText.className = 'intro-text';
+        introText.textContent = 'Made By Youssef Bouden';
+        
+        introAnimation.appendChild(introText);
+        document.body.appendChild(introAnimation);
+
+        // Attendre que l'animation soit terminée avant d'initialiser le jeu
+        setTimeout(() => {
+            introAnimation.style.opacity = '0';
+            setTimeout(() => {
+                document.body.removeChild(introAnimation);
+                this.initGame();
+            }, 500);
+        }, 2500);
     }
 
-    init() {
-        // Gestion de l'écran de démarrage
-        const splashScreen = document.querySelector('.splash-screen');
-        setTimeout(() => {
-            splashScreen.classList.add('fade-out');
-            setTimeout(() => {
-                splashScreen.remove();
-            }, 1000);
-        }, 6000);
-
+    initGame() {
+        this.loadGame();
         this.initElements();
         this.initEventListeners();
-        this.loadGame();
-        this.updateDisplay();
+        this.updateCookiesPerSecond();
         this.startAutoSave();
         this.startGoldenCookieSpawner();
         this.updateAchievements();
         this.updateUpgrades();
-
-        // Ajout de la gestion de l'orientation pour mobile
-        if (this.isMobile) {
-            window.addEventListener('orientationchange', () => {
-                setTimeout(() => this.handleOrientationChange(), 100);
-            });
-            this.handleOrientationChange();
-        }
-    }
-
-    handleOrientationChange() {
-        const isLandscape = window.innerWidth > window.innerHeight;
-        document.body.classList.toggle('landscape', isLandscape);
-        this.updateLayout();
-    }
-
-    updateLayout() {
-        if (this.isMobile) {
-            // Ajuster la taille des éléments en fonction de l'écran
-            const vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-        }
     }
 
     initElements() {
@@ -116,31 +102,13 @@ class CookieGame {
     }
 
     initEventListeners() {
-        if (this.isMobile) {
-            // Optimisation des événements tactiles pour mobile
-            this.cookieElement.addEventListener('touchstart', (e) => {
-                e.preventDefault();
-                this.clickCookie();
-            });
-        } else {
-            this.cookieElement.addEventListener('click', () => this.clickCookie());
-        }
-
+        this.cookieElement.addEventListener('click', () => this.clickCookie());
         this.upgradeElements.forEach(element => {
-            if (this.isMobile) {
-                element.addEventListener('touchstart', (e) => {
-                    e.preventDefault();
-                    const upgradeId = element.dataset.id;
-                    this.buyUpgrade(upgradeId);
-                });
-            } else {
-                element.addEventListener('click', () => {
-                    const upgradeId = element.dataset.id;
-                    this.buyUpgrade(upgradeId);
-                });
-            }
+            element.addEventListener('click', () => {
+                const upgradeId = element.dataset.id;
+                this.buyUpgrade(upgradeId);
+            });
         });
-
         setInterval(() => this.updateGame(), 1000);
     }
 
@@ -157,41 +125,22 @@ class CookieGame {
     spawnGoldenCookie() {
         const goldenCookie = document.createElement('div');
         goldenCookie.className = 'golden-cookie';
-
-        // Ajuster la position en fonction du type d'appareil
-        if (this.isMobile) {
-            // Éviter les bords de l'écran sur mobile
-            const margin = 80; // Taille du cookie doré sur mobile
-            goldenCookie.style.left = Math.random() * (window.innerWidth - margin) + 'px';
-            goldenCookie.style.top = Math.random() * (window.innerHeight - margin) + 'px';
-        } else {
-            goldenCookie.style.left = Math.random() * (window.innerWidth - 60) + 'px';
-            goldenCookie.style.top = Math.random() * (window.innerHeight - 60) + 'px';
-        }
+        goldenCookie.style.left = Math.random() * (window.innerWidth - 60) + 'px';
+        goldenCookie.style.top = Math.random() * (window.innerHeight - 60) + 'px';
         
-        if (this.isMobile) {
-            goldenCookie.addEventListener('touchstart', (e) => {
-                e.preventDefault();
-                this.goldenClicks++;
-                this.applyGoldenCookieEffect();
-                document.body.removeChild(goldenCookie);
-                this.checkAchievements();
-            });
-        } else {
-            goldenCookie.addEventListener('click', () => {
-                this.goldenClicks++;
-                this.applyGoldenCookieEffect();
-                document.body.removeChild(goldenCookie);
-                this.checkAchievements();
-            });
-        }
+        goldenCookie.addEventListener('click', () => {
+            this.goldenClicks++;
+            this.applyGoldenCookieEffect();
+            document.body.removeChild(goldenCookie);
+            this.checkAchievements();
+        });
 
         document.body.appendChild(goldenCookie);
         setTimeout(() => {
             if (document.body.contains(goldenCookie)) {
                 document.body.removeChild(goldenCookie);
             }
-        }, this.isMobile ? 20000 : 15000); // Plus de temps pour attraper sur mobile
+        }, 15000);
     }
 
     applyGoldenCookieEffect() {
