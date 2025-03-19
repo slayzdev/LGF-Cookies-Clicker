@@ -767,41 +767,51 @@ body {
         text-align: center;
     }
 
+    .stats-shop-container {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+        justify-content: space-between;
+    }
+
     .stats {
         padding: 15px;
-        margin: 10px 0;
-        width: 100%;
+        margin: 0;
+        flex: 1;
         text-align: center;
         background: rgba(0, 0, 0, 0.6);
         border-radius: 10px;
+        min-width: 150px;
     }
 
     .stats h2 {
-        font-size: 1.8em;
+        font-size: 1.5em;
         margin-bottom: 10px;
     }
 
     .stats p {
-        font-size: 1.2em;
+        font-size: 1.1em;
     }
 
     .shop {
         position: relative;
-        width: 100%;
+        flex: 1;
         padding: 15px;
-        margin: 10px 0;
+        margin: 0;
         background: rgba(0, 0, 0, 0.6);
         border-radius: 10px;
+        max-height: 300px;
+        overflow-y: auto;
     }
 
     .shop h2 {
-        font-size: 1.8em;
+        font-size: 1.5em;
         margin-bottom: 15px;
         text-align: center;
     }
 
     .upgrades {
-        gap: 15px;
+        gap: 10px;
     }
 
     .upgrade {
@@ -817,17 +827,17 @@ body {
     }
 
     .upgrade .icon {
-        width: 40px;
-        height: 40px;
-        font-size: 1.5em;
+        width: 35px;
+        height: 35px;
+        font-size: 1.3em;
     }
 
     .upgrade h3 {
-        font-size: 1.2em;
+        font-size: 1.1em;
     }
 
     .upgrade p {
-        font-size: 1em;
+        font-size: 0.9em;
     }
 
     .upgrade-stats {
@@ -874,12 +884,12 @@ body {
         height: 100px;
     }
 
-    .stats h2 {
-        font-size: 1.5em;
+    .stats-shop-container {
+        flex-direction: row;
     }
 
-    .shop h2 {
-        font-size: 1.5em;
+    .shop {
+        max-height: 250px;
     }
 }
 
