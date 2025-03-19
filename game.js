@@ -61,10 +61,20 @@ class CookieGame {
     }
 
     init() {
-        this.loadGame();
+        // Gestion de l'écran de démarrage
+        const splashScreen = document.querySelector('.splash-screen');
+        setTimeout(() => {
+            splashScreen.classList.add('fade-out');
+            setTimeout(() => {
+                splashScreen.remove();
+            }, 1000);
+        }, 3000);
+
+        // Reste du code init
         this.initElements();
         this.initEventListeners();
-        this.updateCookiesPerSecond();
+        this.loadGame();
+        this.updateDisplay();
         this.startAutoSave();
         this.startGoldenCookieSpawner();
         this.updateAchievements();
