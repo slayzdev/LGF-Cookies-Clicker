@@ -10,6 +10,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="intro-animation">
+        <div class="intro-text">Made By Youssef Bouden</div>
+    </div>
+
     <div class="game-title">
         <h1>LGF Cookie Clicker</h1>
     </div>
@@ -159,6 +163,18 @@
     <footer class="signature">
         Made with ❤️ by YoYo
     </footer>
+    <script>
+        // Animation d'introduction
+        window.addEventListener('load', function() {
+            const intro = document.querySelector('.intro-animation');
+            setTimeout(() => {
+                intro.style.opacity = '0';
+                setTimeout(() => {
+                    intro.remove();
+                }, 500);
+            }, 2500);
+        });
+    </script>
     <script src="game.js"></script>
 </body>
 </html> 
