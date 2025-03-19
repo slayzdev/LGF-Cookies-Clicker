@@ -726,31 +726,55 @@ body {
         position: relative;
     }
 
+    .container {
+        padding: 5px;
+    }
+
     .game-area {
         height: auto;
         min-height: 100vh;
-        padding: 10px;
+        padding: 5px;
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: 10px;
+        grid-template-columns: 1fr;
     }
 
     .game-title {
-        font-size: 24px;
-        margin: 5px 0;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .game-title h1 {
+        font-size: 1.8em;
+    }
+
+    .main-content {
+        padding: 10px;
     }
 
     .cookie {
-        width: 150px;
-        height: 150px;
-        margin: 10px auto;
+        width: 100px;
+        height: 100px;
+        margin: 5px auto;
+    }
+
+    .cookie-container {
+        margin: 10px 0;
     }
 
     .stats {
-        position: relative;
-        width: 100%;
         padding: 10px;
         margin: 5px 0;
+    }
+
+    .stats h2 {
+        font-size: 1.5em;
+        margin-bottom: 5px;
+    }
+
+    .stats p {
+        font-size: 1em;
     }
 
     .shop {
@@ -758,23 +782,77 @@ body {
         width: 100%;
         height: auto;
         max-height: none;
-        overflow-y: auto;
+        padding: 10px;
         margin: 5px 0;
+    }
+
+    .shop h2 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .upgrades {
+        gap: 10px;
     }
 
     .upgrade {
-        width: 100%;
-        margin: 5px 0;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .upgrade .icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5em;
+    }
+
+    .upgrade h3 {
+        font-size: 1em;
+    }
+
+    .upgrade p {
+        font-size: 0.8em;
+    }
+
+    .upgrade-stats {
+        padding: 5px;
+        font-size: 0.8em;
     }
 
     .golden-cookie {
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
     }
 
     .splash-screen {
         height: 100vh;
-        position: fixed;
+    }
+
+    .splash-content h1 {
+        font-size: 2em;
+    }
+
+    .splash-content p {
+        font-size: 1em;
+    }
+
+    .signature {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+
+    #achievements h2 {
+        font-size: 1.5em;
+        margin: 10px 0;
+    }
+
+    #achievements-list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .achievement {
+        padding: 10px;
     }
 }
 
@@ -782,16 +860,22 @@ body {
     .game-area {
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-around;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 5px;
+    }
+
+    .main-content {
+        width: 60%;
+    }
+
+    .shop {
+        width: 38%;
     }
 
     .cookie {
-        width: 120px;
-        height: 120px;
-    }
-
-    .stats, .shop {
-        width: 45%;
+        width: 80px;
+        height: 80px;
     }
 }
 
